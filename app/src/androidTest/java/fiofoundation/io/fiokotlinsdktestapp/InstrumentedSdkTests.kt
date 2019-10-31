@@ -54,8 +54,8 @@ class InstrumentedSdkTests {
 
     private var sharedSecretKey:ByteArray? = null
 
-    private var baseUrl = "http://dev3.fio.dev:8889/v1/"
-    private var baseMockUrl = "http://mock.dapix.io/mockd/DEV3/"
+    private var baseUrl = """
+    private var baseMockUrl = ""
     private var fioSdk:FIOSDK? = null
 
     private var logTag = "FIOSDK-TEST"
