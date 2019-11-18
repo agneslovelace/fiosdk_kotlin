@@ -30,8 +30,8 @@ import java.security.SecureRandom
 @RunWith(AndroidJUnit4::class)
 class InstrumentedSdkTests {
 
-    private val baseUrl = "http://dev3.fio.dev:8889/v1/"
-    private val baseMockUrl = "http://mock.dapix.io/mockd/DEV3/"
+    private val baseUrl = ""
+    private val baseMockUrl = ""
 
     private var alicePrivateKey = ""
     private var alicePublicKey = ""
@@ -41,7 +41,7 @@ class InstrumentedSdkTests {
     private var aliceFioAddress = ""
     private var bobFioAddress = ""
 
-    private var testFioDomain = "brd"
+    private var testFioDomain = ""
     private var testRenewDomain = ""
 
     private var walletFioAddress = "rewards:wallet"
