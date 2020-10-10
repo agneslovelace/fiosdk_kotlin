@@ -322,10 +322,6 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
-        {
-            throw fioError
-        }
         catch(prepError: TransactionPrepareError)
         {
             throw FIOError(prepError.message!!,prepError)
@@ -344,6 +340,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
         }
     }
 
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun registerFioAddress(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = RegisterFIOAddressTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
+        }
+        catch(prepError: TransactionPrepareError)
+        {
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
     /**
      * Registers a FIO Address on the FIO blockchain.
      *
@@ -442,9 +470,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun registerFioDomain(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = RegisterFIODomainTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -561,9 +618,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun renewFioDomain(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = RegisterFIODomainTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -648,9 +734,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun renewFioAddress(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = RenewFIOAddressTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -738,9 +853,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun transferTokens(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = TransTokensPubKeyTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -1030,9 +1174,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun rejectFundsRequest(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = RejectFundsRequestTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -1282,6 +1455,39 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
     {
         return recordObtData(payerFioAddress,payeeFioAddress,payerTokenPublicAddress,payeeTokenPublicAddress,
             amount,tokenCode,tokenCode,status,obtId,maxFee,this.technologyPartnerId)
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun recordObtData(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = RecordObtDataTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
+        }
+        catch(prepError: TransactionPrepareError)
+        {
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
     }
 
     /**
@@ -1700,9 +1906,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun addPublicAddress(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = AddPublicAddressTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -1774,9 +2009,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun addPublicAddresses(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = AddPublicAddressTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -1850,9 +2114,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun setFioDomainVisibility(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = SetFioDomainVisibilityTrxProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -1907,9 +2200,38 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
 
             return transactionProcessor.broadcast()
         }
-        catch(fioError:FIOError)
+        catch(prepError: TransactionPrepareError)
         {
-            throw fioError
+            throw FIOError(prepError.message!!,prepError)
+        }
+        catch(signError: TransactionSignError)
+        {
+            throw FIOError(signError.message!!,signError)
+        }
+        catch(broadcastError: TransactionBroadCastError)
+        {
+            throw FIOError(broadcastError.message!!,broadcastError)
+        }
+        catch(e:Exception)
+        {
+            throw FIOError(e.message!!,e)
+        }
+    }
+
+    @Throws(FIOError::class)
+    @ExperimentalUnsignedTypes
+    private fun pushTransaction(pushTransactionRequest: PushTransactionRequest): PushTransactionResponse
+    {
+        val transactionProcessor = TransactionProcessor(
+            this.serializationProvider,
+            this.networkProvider,
+            this.abiProvider,
+            this.signatureProvider
+        )
+
+        try
+        {
+            return transactionProcessor.rebroadcast(pushTransactionRequest)
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -1991,10 +2313,6 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
                 return transactionProcessor.broadcast()
             }
         }
-        catch(fioError:FIOError)
-        {
-            throw fioError
-        }
         catch(prepError: TransactionPrepareError)
         {
             throw FIOError(prepError.message!!,prepError)
@@ -2027,10 +2345,6 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
         try
         {
            return transactionProcessor.rebroadcast(pushTransactionRequest)
-        }
-        catch(fioError:FIOError)
-        {
-            throw fioError
         }
         catch(prepError: TransactionPrepareError)
         {
@@ -2159,10 +2473,6 @@ class FIOSDK(private var privateKey: String, var publicKey: String,var technolog
 
                 return transactionProcessor.broadcast()
             }
-        }
-        catch(fioError:FIOError)
-        {
-            throw fioError
         }
         catch(prepError: TransactionPrepareError)
         {
